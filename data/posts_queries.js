@@ -5,6 +5,7 @@ function Posts() {
 }
 
 module.exports = {
+
   getAllPosts: function(commentID) {
     return Posts()
             .innerJoin('comments', 'posts.id', 'comments.post_id');
@@ -15,6 +16,7 @@ module.exports = {
             .where('id', id)
             .innerJoin('comments', 'posts.id', 'comments.post_id');
   },
+  
   addPost: function(body) {
     return Posts()
             .insert({
@@ -24,6 +26,7 @@ module.exports = {
               description: body.description
             });
   },
+
   updatePost: function(id, body) {
     return Posts()
             .where('id', id)
@@ -35,9 +38,11 @@ module.exports = {
               votes: body.votes
             });
   },
+
   deletePost: function(id) {
     return Posts()
             .where('id', id)
             .del();
   }
+
 };
