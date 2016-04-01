@@ -11,6 +11,8 @@ var bcrypt = require('bcrypt');
 
 // *** routes *** //
 var routes = require('./routes/index.js');
+var postApi = require('./routes/postsApi.js');
+var commentsApi = require('./routes/commentsApi.js');
 
 
 // *** express instance *** //
@@ -29,6 +31,8 @@ app.get('/', function(req,res,next) {
     res.sendFile(path.join(__dirname, '../client/app', 'index.html'));
 });
 app.use('/', routes);
+app.use('/api/posts', postApi);
+app.use('/api/comments', commentsApi);
 
 
 // catch 404 and forward to error handler
