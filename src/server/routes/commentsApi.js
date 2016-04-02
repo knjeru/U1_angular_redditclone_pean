@@ -9,14 +9,18 @@ router.get('/', function(req,res,next) {
     });
 });
 
-router.post('/:id/new', function(req,res, next) {
-    query.addComment(req.params.id, req.body)
+router.post('/', function(req,res, next) {
+    query.addComment(req.body)
     .then(function(data) {
-        res.status(200);
+        res.json({
+            message: 'success'
+        })
     })
     .catch(function(err) {
         if(err) {
-            res.status(500)
+            res.json({
+                message: 'error at the plant'
+            })
         }
     });
 });
@@ -36,7 +40,9 @@ router.put('/:id/edit', function(req,res,next) {
 router.delete('/:id/delete', function(req,res,next) {
     query.deleteComment(req.params.id)
     .then(function(data) {
-        res.status(200)
+        res.json({
+            message: 'success'
+        })
     })
     .catch(function(err) {
         if(err) {

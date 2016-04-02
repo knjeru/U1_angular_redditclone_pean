@@ -8,17 +8,18 @@ module.exports = {
 
   getAllPosts: function(commentID) {
     return Posts()
-            .innerJoin('comments', 'posts.id', 'comments.post_id');
+            // .innerJoin('comments', 'posts.id', 'comments.post_id');
   },
 
   getAPost: function(id) {
     return Posts()
             .where('id', id)
-            .innerJoin('comments', 'posts.id', 'comments.post_id');
+            // .innerJoin('comments', 'posts.id', 'comments.post_id');
   },
   
   addPost: function(body) {
     return Posts()
+            .where('id', id)
             .insert({
               title: body.title,
               author: body.author,

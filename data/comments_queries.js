@@ -11,12 +11,12 @@ module.exports = {
             .where('post_id', id);
   },
   
-  addComment: function(id, body) {
+  addComment: function(body) {
     return Comments()
             .insert({
               author: body.author,
               text: body.text,
-              post_id: id
+              post_id: body.post_id
             });
   },
 

@@ -32,7 +32,7 @@ app.get('/', function(req,res,next) {
 });
 app.use('/', routes);
 app.use('/api/posts', postApi);
-app.use('/api/comments', commentsApi);
+app.use('/api/posts/:postId/comments', commentsApi);
 
 
 // catch 404 and forward to error handler
