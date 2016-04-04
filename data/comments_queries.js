@@ -10,11 +10,11 @@ module.exports = {
     return Commments()
             .where('post_id', id);
   },
-  
+
   addComment: function(body) {
     return Comments()
             .insert({
-              author: body.author,
+              author: body.comment_author,
               text: body.text,
               post_id: body.post_id
             });
@@ -24,7 +24,7 @@ module.exports = {
     return Comments()
             .where('id', id)
             .update({
-              author: body.author,
+              author: body.comment_author,
               text: body.text
             });
   },

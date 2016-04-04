@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="new">
+    <form ng-submit="addPost()">
+      <label for="title">Title</label><br>
+      <input type="text" placeholder="Title" ng-model="postFormData.title">
+      <label for="author">Author</label>
+      <input type="text" placeholder="Author" ng-model="postFormData.post_author">
+      <label for="imgUrl">Image URL</label>
+      <input type="text" placeholder="Image URL" ng-model="postFormData.imgUrl">
+      <label for="title">Description</label>
+      <textarea ng-model="postFormData.description" rows="8" cols="40"></textarea>
+      <button type="Submit">Add Post</button>
+    </form>
+  </div>
+  <div class="row" id="post" ng-repeat="post in postsDB">
+    <div class="col-md-2">
+      <div class="imgcontainer">
+        <img ng-src="{{post.imgUrl}}"/>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="row">
+        <h3>{{post.title}} |</h3>
+        <button type="button" ng-click="addVote()">UpVote</button>
+        <button type="button" ng-click="downVote()">DownVote</button>
+        <p>by {{post.post_author}}</p>
+      </div>
+      <div class="row">
+        {{post.description}}
+      </div>
+      <div class="row">
+        <p>Date: {{post.date | date: 'fulldate'}}</p>
+        <p>Comments {{post.text}} by {{post.comment_author}}</p>
+        <p>Add Comment</p>
+        <form ng-submit="addComment()" ng-controller="MainCommentCtrl">
+          <label for="title">Author</label>
+          <input type="text" placeholder="Author" ng-model="commentFormData.comment_author">
+          <label for="author">Text</label>
+          <input type="text" placeholder="Text" ng-model="commentFormData.text">
+          <input id="commentpostID" type="text" ng-model="commentFormData.post_id" ng-value=post.id>
+          <button type="Submit">Add Post</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

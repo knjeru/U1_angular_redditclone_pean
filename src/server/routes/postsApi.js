@@ -16,10 +16,12 @@ router.get('/:id', function(req,res,next) {
     });
 });
 
-router.post('/new', function(req,res, next) {
+router.post('/', function(req,res, next) {
     query.addPost(req.body)
     .then(function(data) {
-        res.status(200);
+        res.json({
+            message: 'success'
+        });
     })
     .catch(function(err) {
         if(err) {
@@ -31,7 +33,10 @@ router.post('/new', function(req,res, next) {
 router.put('/:id/edit', function(req,res,next) {
     query.updatePost(req.params.id, req.body)
     .then(function(data) {
-        res.status(200)
+        res.json({
+            status: 200,
+            message: 'success'
+        });
     })
     .catch(function(err) {
         if(err) {
@@ -53,4 +58,3 @@ router.delete('/:id/delete', function(req,res,next) {
 });
 
 module.exports = router;
-

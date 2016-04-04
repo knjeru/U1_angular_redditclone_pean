@@ -14,13 +14,13 @@ router.post('/', function(req,res, next) {
     .then(function(data) {
         res.json({
             message: 'success'
-        })
+        });
     })
     .catch(function(err) {
         if(err) {
             res.json({
                 message: 'error at the plant'
-            })
+            });
         }
     });
 });
